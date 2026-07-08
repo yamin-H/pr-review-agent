@@ -2,8 +2,6 @@
 
 import { useState } from 'react'
 import { Button } from '@/components/ui/button'
-import { API_URL, AGENT_URL } from '@/lib/config'
-
 
 export default function SettingsPage() {
   const [onboarding, setOnboarding] = useState<'idle' | 'loading' | 'done' | 'error'>('idle')
@@ -17,7 +15,7 @@ export default function SettingsPage() {
     setResult(null)
 
     try {
-      const res = await fetch(`${AGENT_URL}/onboard`, {
+      const res = await fetch('https://pr-review-agent-1-3dhs.onrender.com/onboard', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -42,7 +40,6 @@ export default function SettingsPage() {
                 <p className="text-white/40 text-sm">Manage your repos and agent configuration</p>
             </div>
 
-            {/* Onboarding */}
             <div className="border border-white/10 rounded-xl p-6 mb-4">
                 <div className="flex items-start gap-4 mb-5">
                     <div className="w-10 h-10 rounded-lg bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-xl flex-shrink-0">
@@ -85,7 +82,6 @@ export default function SettingsPage() {
                 </Button>
             </div>
 
-            {/* GitHub App */}
             <div className="border border-white/10 rounded-xl p-6 mb-4">
                 <div className="flex items-start gap-4 mb-5">
                     <div className="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-xl flex-shrink-0">
@@ -98,18 +94,17 @@ export default function SettingsPage() {
                         </p>
                     </div>
                 </div>
-                <a  
+                <a
                     href="https://github.com/apps/pr-review-agent/installations/new"
                     target="_blank"
                     rel="noopener noreferrer"
                 >
-                    <Button variant="outline" className="border-white/20 text-black hover:bg-white/10 hover:text-gray-200 cursor-pointer">
+                    <Button variant="outline" className="border-white/20 text-white hover:bg-white/10">
                         Manage on GitHub →
                     </Button>
                 </a>
             </div>
 
-            {/* Account */}
             <div className="border border-white/10 rounded-xl p-6">
                 <div className="flex items-start gap-4 mb-5">
                     <div className="w-10 h-10 rounded-lg bg-red-500/10 border border-red-500/20 flex items-center justify-center text-xl flex-shrink-0">
@@ -122,9 +117,9 @@ export default function SettingsPage() {
                 </div>
                 <Button
                     variant="outline"
-                    className="border-red-500/30 text-red-400 hover:bg-red-500/10 hover:border-red-500/50 hover:text-white"
+                    className="border-red-500/30 text-red-400 hover:bg-red-500/10 hover:border-red-500/50"
                     onClick={async () => {
-                        await fetch(`${API_URL}/auth/logout`, {
+                        await fetch('https://pr-review-agent-9q1e.onrender.com/auth/logout', {
                             method: 'POST',
                             credentials: 'include'
                         })

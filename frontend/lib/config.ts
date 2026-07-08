@@ -1,2 +1,2 @@
-export const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000'
-export const AGENT_URL = process.env.NEXT_PUBLIC_AGENT_URL || 'http://localhost:8000'
+export const API_URL = process.env.NEXT_PUBLIC_API_URL || 'https://pr-review-agent-9q1e.onrender.com'
+export const AGENT_URL = process.env.NEXT_PUBLIC_AGENT_URL || 'https://pr-review-agent-1-3dhs.onrender.com'

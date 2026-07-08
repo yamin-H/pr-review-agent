@@ -2,9 +2,8 @@
 
 import { useState } from 'react'
 import { Button } from '@/components/ui/button'
-import { API_URL } from '@/lib/config'
+import { API_URL, AGENT_URL } from '@/lib/config'
 
-const AGENT_URL = process.env.NEXT_PUBLIC_AGENT_URL || 'https://pr-review-agent-1-3dhs.onrender.com'
 
 export default function SettingsPage() {
   const [onboarding, setOnboarding] = useState<'idle' | 'loading' | 'done' | 'error'>('idle')

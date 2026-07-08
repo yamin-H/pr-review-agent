@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { Button } from '@/components/ui/button'
+import { API_URL, AGENT_URL } from '@/lib/config'
 
 export default function SettingsPage() {
   const [onboarding, setOnboarding] = useState<'idle' | 'loading' | 'done' | 'error'>('idle')
@@ -15,7 +16,7 @@ export default function SettingsPage() {
     setResult(null)
 
     try {
-      const res = await fetch('http://localhost:8000/onboard', {
+      const res = await fetch(`${AGENT_URL}/onboard`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -122,7 +123,7 @@ export default function SettingsPage() {
                     variant="outline"
                     className="border-red-500/30 text-red-400 hover:bg-red-500/10 hover:border-red-500/50 hover:text-white"
                     onClick={async () => {
-                        await fetch('http://localhost:3000/auth/logout', {
+                        await fetch(`${API_URL}/auth/logout`, {
                             method: 'POST',
                             credentials: 'include'
                         })

@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react'
 import { Badge } from '@/components/ui/badge'
 import { Skeleton } from '@/components/ui/skeleton'
+import { API_URL } from '@/lib/config'
 
 export default function ReviewsPage() {
   const [reviews, setReviews] = useState<any[]>([])
@@ -10,7 +11,7 @@ export default function ReviewsPage() {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    fetch('http://localhost:3000/api/reviews', { credentials: 'include' })
+    fetch(`${API_URL}/api/reviews`, { credentials: 'include' })
       .then(r => r.json())
       .then(d => {
         const list = d.reviews || []

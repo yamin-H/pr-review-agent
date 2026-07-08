@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react'
 import { Badge } from '@/components/ui/badge'
 import { Skeleton } from '@/components/ui/skeleton'
+import { API_URL, AGENT_URL } from '@/lib/config'
 
 export default function DashboardPage() {
   const [repos, setRepos] = useState<any[]>([])
@@ -14,9 +15,9 @@ export default function DashboardPage() {
     async function load() {
       try {
         const [reposRes, reviewsRes, memoryRes] = await Promise.all([
-          fetch('http://localhost:3000/api/repos', { credentials: 'include' }),
-          fetch('http://localhost:3000/api/reviews', { credentials: 'include' }),
-          fetch('http://localhost:3000/api/memory/stats', { credentials: 'include' })
+          fetch(`${API_URL}/api/repos`, { credentials: 'include' }),
+          fetch(`${API_URL}/api/reviews`, { credentials: 'include' }),
+          fetch(`${API_URL}/api/memory/stats`, { credentials: 'include' })
         ])
         const reposData = await reposRes.json()
         const reviewsData = await reviewsRes.json()

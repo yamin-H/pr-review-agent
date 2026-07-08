@@ -2,8 +2,8 @@ import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 
 export default function LandingPage() {
-  const GITHUB_APP_INSTALL_URL = `https://github.com/apps/pr-review-agent/installations/new`
-  const GITHUB_OAUTH_URL = `http://localhost:3000/auth/github`
+    const GITHUB_APP_INSTALL_URL = `https://github.com/apps/pr-review-agent/installations/new`;
+    const GITHUB_OAUTH_URL = `https://pr-review-agent-9q1e.onrender.com/auth/github`;
 
     return (
         <main className="min-h-screen bg-black text-white">

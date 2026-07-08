@@ -2,13 +2,14 @@
 
 import { useEffect, useState } from 'react'
 import { Skeleton } from '@/components/ui/skeleton'
+import { API_URL } from '@/lib/config'
 
 export default function DigestPage() {
   const [digests, setDigests] = useState<any[]>([])
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    fetch('http://localhost:3000/api/digest/preview', { credentials: 'include' })
+    fetch(`${API_URL}/api/digest/preview`, { credentials: 'include' })
       .then(r => r.json())
       .then(d => setDigests(d.digests || []))
       .catch(console.error)

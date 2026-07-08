@@ -3,13 +3,14 @@
 import { useEffect, useState } from 'react'
 import { Badge } from '@/components/ui/badge'
 import { Skeleton } from '@/components/ui/skeleton'
+import { API_URL } from '@/lib/config'
 
 export default function MemoryPage() {
   const [stats, setStats] = useState<any>(null)
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    fetch('http://localhost:3000/api/memory/stats', { credentials: 'include' })
+    fetch(`${API_URL}/api/memory/stats`, { credentials: 'include' })
       .then(r => r.json())
       .then(setStats)
       .catch(console.error)

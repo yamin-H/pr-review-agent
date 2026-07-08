@@ -1,12 +1,8 @@
 import { Queue } from 'bullmq'
-import connection from '../lib/redis'
+import { getConnectionOptions } from '../lib/redis'
 
-export interface DigestJobData {
-  triggered_at: string
-}
-
-const digestQueue = new Queue<DigestJobData>('digest-queue', {
-    connection,
+const digestQueue = new Queue('digest-queue', {
+    connection: getConnectionOptions(),
     defaultJobOptions: {
         attempts: 3,
         backoff: { type: 'exponential', delay: 5000 },

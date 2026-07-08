@@ -1,21 +1,11 @@
-import { Queue } from "bullmq";
-import connection from "../lib/redis";
+import { Queue } from 'bullmq'
+import { getConnectionOptions } from '../lib/redis'
 
-export interface ReviewJobData{
-    job_id: string
-    repo: string
-    pr_number: number
-    installation_id: number
-}
-
-const reviewQueue = new Queue<ReviewJobData>('review-queue', {
-    connection,
+const reviewQueue = new Queue('review-queue', {
+    connection: getConnectionOptions(),
     defaultJobOptions: {
         attempts: 3,
-        backoff: {
-            type: "exponential",
-            delay: 5000
-        },
+        backoff: { type: 'exponential', delay: 5000 },
         removeOnComplete: 100,
         removeOnFail: 50
     }

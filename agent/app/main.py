@@ -10,7 +10,10 @@ app = FastAPI(
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:4000"],
+    allow_origins=[
+        "http://localhost:4000",
+        "https://pr-review-agent-qt4w55lg5-yamin-hs-projects.vercel.app"
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

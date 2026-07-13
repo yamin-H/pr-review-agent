@@ -1,6 +1,7 @@
 from sentence_transformers import SentenceTransformer
+import numpy as np
 
-model = SentenceTransformer('all-MiniLM-L6-v2')
+model = SentenceTransformer('paraphrase-MiniLM-L3-v2')
 
 def embed(text: str) -> list[float]:
     """Convert text to a 384-dimensional vector."""

@@ -18,7 +18,11 @@ const PORT = process.env.PORT || 3000
 app.use('/webhooks', express.raw({ type: 'application/json' }));
 app.use(express.json())
 app.use(cors({
-    origin: ['http://localhost:4000'],
+    origin: [
+        'http://localhost:4000',
+        'https://pr-review-agent-qt4w55lg5-yamin-hs-projects.vercel.app',
+        'https://pr-review-agent-steel.vercel.app'
+    ],
     credentials: true
 }));
 
